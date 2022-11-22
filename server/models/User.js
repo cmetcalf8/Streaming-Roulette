@@ -1,18 +1,28 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
+const favSchema = require('./Fav');
 
-const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    lastAccessed: { type: Date, default: Date.now },
-});
+const userSchema = new Schema(
+  {
+    first: {
+      type: String,
+      required: true,
+      max_length: 50,
+    },
+    last: {
+      type: String,
+      required: true,
+      max_length: 50,
+    },
 
-const User = mongoose.model('User', userSchema);
+    favs: [favSchema],
+  },
+  {
+    toJSON: {
+      getters: true,
+    },
+  }
+);
 
-const handleError = (err) => console.error(err);
+const User = model('user', userSchema);
 
-User.find({}).exec((err, collection) => {
-    if (collection.length === 0) {
-        User.insertMany(
-            
-        )
-    }
-})
+module.exports = User;
