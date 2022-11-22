@@ -13,11 +13,6 @@ const favSchema = new Schema(
       minlength: 4,
       default: 'Unnamed favorite',
     },
-    score: {
-      type: Number,
-      required: true,
-      default: () => Math.floor(Math.random() * (100 - 70 + 1) + 70),
-    },
   },
   {
     toJSON: {
