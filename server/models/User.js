@@ -3,15 +3,22 @@ const favSchema = require('./Fav');
 
 const userSchema = new Schema(
   {
-    first: {
+    username: {
       type: String,
       required: true,
-      max_length: 50,
+      unique: true,
+      trim: true,
     },
-    last: {
+    email: {
       type: String,
       required: true,
-      max_length: 50,
+      unique: true,
+      match: [/.+@.+\..+/, 'Must match an email address!'],
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 5,
     },
 
     favs: [favSchema],
