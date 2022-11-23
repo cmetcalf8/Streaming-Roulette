@@ -4,18 +4,8 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-      users: async () => {
-        return User.find().populate('thoughts');
-      },
       user: async (parent, { username }) => {
-        return User.findOne({ username }).populate('thoughts');
-      },
-      thoughts: async (parent, { username }) => {
-        const params = username ? { username } : {};
-        return Thought.find(params).sort({ createdAt: -1 });
-      },
-      thought: async (parent, { thoughtId }) => {
-        return Thought.findOne({ _id: thoughtId });
+        return User.findOne({ username }).populate('favs');
       },
     },
   
@@ -46,17 +36,25 @@ const resolvers = {
         const favorite = await Favorite.create({ favoriteTitle });
   
         await User.findOneAndUpdate(
-          { username: thoughtTitle },
-          { $addToSet: { favorites: favorite._id } }
+          { username: favoriteTitle },
+          { $addToSet: { favorites: favorite.title } }
         );
   
         return favorite;
       },
     
-      removeFavorite: async (parent, { favoriteId }) => {
-        return Favorite.findOneAndDelete({ _id: favoriteId });
+      removeFavorite: async (parent, { favoriteTitle }) => {
+        return Favorite.findOneAndDelete({ title: favoriteTitle });
       },
     },
   };
   
   module.exports = resolvers;
+
+  // favorites: async (parent, { username }) => {
+  //   const params = username ? { username } : {};
+  //   return Favorite.find(params).sort({ createdAt: -1 });
+  // },
+  // favorite: async (parent, { favoriteTitle }) => {
+  //   return Favorite.findOne({ title: favoriteTitle });
+  // },
