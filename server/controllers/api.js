@@ -18,14 +18,35 @@ const options = {
   }
 };
 
-export function getRandomMovie(){
+ function getRandomMovie(){
     axios.request(options).then(function (response) {
         
-        console.log(response.data);
-        return response.data
+        // console.log(response.data.results);
+        randomize(response.data.results);
+        // return response.data
     }).catch(function (error) {
         console.error(error);
     });
 }
+getRandomMovie()
 
+function randomize(movieArray){
 
+  var randomMovieIndex = Math.floor(Math.random()*movieArray.length)
+  console.log(randomMovieIndex)
+
+var randomMovieTitle = movieArray[randomMovieIndex].title
+console.log(randomMovieTitle)
+var randomMovieRating = movieArray[randomMovieIndex].imdbRating
+var randomMovieOverview = movieArray[randomMovieIndex].overview
+var randomMovieIMG = movieArray[randomMovieIndex].posterPath
+
+var movieObject = {
+  title: randomMovieTitle,
+  ratingIMDB: randomMovieRating,
+  overview: randomMovieOverview,
+  imageURL: randomMovieIMG
+}
+console.log(movieObject)
+return movieObject;
+}
