@@ -9,8 +9,6 @@ const favSchema = new Schema(
     favTitle: {
       type: String,
       required: true,
-      maxlength: 50,
-      minlength: 4,
       default: 'Unnamed favorite',
     },
   },

@@ -1,3 +1,14 @@
+body {
+  background: navy;
+  color: white;
+}
+
+.movie-app > .row {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+/* 
 .App {
   text-align: center;
 }
@@ -35,4 +46,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
