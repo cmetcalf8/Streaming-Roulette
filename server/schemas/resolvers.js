@@ -42,19 +42,19 @@ const resolvers = {
   
         return { token, user };
       },
-      addFavorite: async (parent, { thoughtText, thoughtAuthor }) => {
-        const thought = await Thought.create({ thoughtText, thoughtAuthor });
+      addFavorite: async (parent, { favoriteTitle }) => {
+        const favorite = await Favorite.create({ favoriteTitle });
   
         await User.findOneAndUpdate(
-          { username: thoughtAuthor },
-          { $addToSet: { thoughts: thought._id } }
+          { username: thoughtTitle },
+          { $addToSet: { favorites: favorite._id } }
         );
   
-        return thought;
+        return favorite;
       },
     
-      removeFavorite: async (parent, { thoughtId }) => {
-        return Thought.findOneAndDelete({ _id: thoughtId });
+      removeFavorite: async (parent, { favoriteId }) => {
+        return Favorite.findOneAndDelete({ _id: favoriteId });
       },
     },
   };
