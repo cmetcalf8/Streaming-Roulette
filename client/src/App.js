@@ -1,14 +1,14 @@
-import React { useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import './App.css';
 import AddFavourites from './components/AddFavourites';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 
-const APP = () => {
+export default function App() {
   const [movies, setMovies] = useState([]);
   const [favourites, setFavourites] = useState([]);
   const [searchValue, setSearchValue] = useState('');
@@ -31,7 +31,7 @@ const APP = () => {
   }, [searchValue]);
 
   useEffect(()=>{
-    const movieFavourites - JSON.parse(
+    const movieFavourites = JSON.parse(
       localStorage.getItem('react-movie-app-favourites')
     );
 
@@ -49,40 +49,40 @@ const APP = () => {
     saveToLocalStorage(newFavouriteList);
   };
 
-  const RemoveFavouritesMovie = (movie) => {
+  const RemoveFavourites = (movie) => {
     const newFavouriteList = favourites.filter(
     (favourite) => favourite.imdbID !== movie.imdbID)
 };
 
   setFavourites(newFavouriteList);
   saveToLocalStorage(newFavouriteList);
-};
 
-  return
-  <div className='container-fluid movie-app'
+  return(
+  <div className='container-fluid movie-app'>
       <div className='row d-flex align-items-center mt-4 mb-4'>
-        <MovieLIstHeading heading='Movies'/>
-       <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
-   </div>
-   <div className="row">
-    <MovieList 
-    movies={movies} 
-    handleFavouritesClick={addFavouriteMovie}
-    favouriteComponent = {AddFavourites}
-    />
+        <MovieListHeading heading='Movies'/>
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
+      </div>
+    <div className="row">
+      <MovieList 
+      movies={movies} 
+      handleFavouritesClick={addFavouriteMovie}
+      favouriteComponent = {AddFavourites}
+      />
    </div>
    <div className='container-fluid movie-app'>
       <div className='row d-flex align-items-center mt-4 mb-4'>
-        <MovieLIstHeading heading='Favourites' />      
-   </div>
-   <div className='row'>
-    <MovieList
-      movies={favourites}
-      handleFavouritesClick={addFavouriteMovie}
-      favouriteComponent={RemoveFavourites}
-      />
+        <MovieListHeading heading='Favourites' />      
       </div>
+      <div className='row'>
+        <MovieList
+          movies={favourites}
+          handleFavouritesClick={addFavouriteMovie}
+          favouriteComponent={RemoveFavourites}
+          />
+      </div>
+    </div>
    </div>
-};
-};
-export default App;
+  );
+  };
+
