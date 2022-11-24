@@ -5,10 +5,10 @@ import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import './App.css';
 import AddFavourites from './components/AddFavourites';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 
-const APP = () => {
+export default function App() {
   const [movies, setMovies] = useState([]);
   const [favourites, setFavourites] = useState([]);
   const [searchValue, setSearchValue] = useState('');
@@ -49,7 +49,7 @@ const APP = () => {
     saveToLocalStorage(newFavouriteList);
   };
 
-  const RemoveFavouritesMovie = (movie) => {
+  const RemoveFavourites = (movie) => {
     const newFavouriteList = favourites.filter(
     (favourite) => favourite.imdbID !== movie.imdbID)
 };
@@ -86,4 +86,3 @@ const APP = () => {
   );
   };
 
-export default APP;
