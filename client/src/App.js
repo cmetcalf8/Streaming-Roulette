@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
+import NavBar from "./components/NavBar";
 import './App.css';
 import AddFavourites from './components/AddFavourites';
 // import { useEffect } from 'react';
