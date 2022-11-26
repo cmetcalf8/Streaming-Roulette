@@ -7,7 +7,7 @@
 }
 
 body {
-  background: navy;
+  background: black;
   color: white;
   font-family: "Karla", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
   "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -19,6 +19,14 @@ body {
 .movie-app > .row {
   overflow-x: auto;
   flex-wrap: nowrap;
+}
+
+.home {
+  margin: auto;
+  width: 50%;
+  border: 3px solid red;
+  padding: 10px;
+  text-align: center;
 }
 
 

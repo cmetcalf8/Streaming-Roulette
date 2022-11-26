@@ -1,17 +1,15 @@
-import React, {useState, useEffect} from "react"; // { useEffect, useState } 
+import React, {useState, useEffect} from "react"; 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
-import './App.css';
 import AddFavourites from './components/AddFavourites';
 
 import NavBar from "./components/NavBar";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import Favorites from "./components/Favorites";
 
+import MainContainer from "./pages/MainContainer";
 
 export default function App() {
   const [movies, setMovies] = useState([]); // setMovies
@@ -58,61 +56,40 @@ export default function App() {
       (favourite) => favourite.imdbID !== movie.imdbID)
   };
 
-  // Page handler so the page will change with the selected component
-  // const [currentPage, setCurrentPage] = useState('App');
-
-  // const renderPage = () => {
-  //   if (currentPage === 'App') {
-  //     return <App />;
-  //   }
-  //   if (currentPage === 'SignUp') {
-  //     return <Signup />;
-  //   }
-  //   if (currentPage === 'Login') {
-  //     return <Login />;
-  //   }
-  //   // if (currentPage === 'Favorites') {
-  //   //     return <Favorites />;
-  //   // }
-  //   return <App />;
-  // };
-
-  // const handlePageChange = (page) => setCurrentPage(page);
-
   return (
-    
-    <div className='container-fluid movie-app'>
-      <div className="">
-      <NavBar  
-      // currentPage={currentPage} handlePageChange={handlePageChange}
-      />
-      {/* {renderPage()} */}
-      </div>
-      <div className='row d-flex align-items-center mt-4 mb-4'>
-        <MovieListHeading heading='Movies' />
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
-      </div>
-      <div className="row">
-        <MovieList
-          getMovieRequest={getMovieRequest}
-          movies={movies}
-          handleFavouritesClick={addFavouriteMovie}
-          favouriteComponent={AddFavourites}
-        />
-      </div>
-      <div className='container-fluid movie-app'>
-        <div className='row d-flex align-items-center mt-4 mb-4'>
-          <MovieListHeading heading='Favourites' />
-        </div>
-        <div className='row'>
-          <MovieList
-            movies={favourites}
-            handleFavouritesClick={addFavouriteMovie}
-            favouriteComponent={RemoveFavourites}
-          />
-        </div>
-      </div>
+    <div>
+      <MainContainer />
     </div>
+    
+    // <div className='container-fluid movie-app'>
+    //   <div className="">
+    //   <NavBar />
+    //   </div>
+    //   <div className='row d-flex align-items-center mt-4 mb-4'>
+    //     <MovieListHeading heading='Movies' />
+    //     <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+    //   </div>
+    //   <div className="row">
+    //     <MovieList
+    //       getMovieRequest={getMovieRequest}
+    //       movies={movies}
+    //       handleFavouritesClick={addFavouriteMovie}
+    //       favouriteComponent={AddFavourites}
+    //     />
+    //   </div>
+    //   <div className='container-fluid movie-app'>
+    //     <div className='row d-flex align-items-center mt-4 mb-4'>
+    //       <MovieListHeading heading='Favourites' />
+    //     </div>
+    //     <div className='row'>
+    //       <MovieList
+    //         movies={favourites}
+    //         handleFavouritesClick={addFavouriteMovie}
+    //         favouriteComponent={RemoveFavourites}
+    //       />
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 
