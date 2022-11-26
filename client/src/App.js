@@ -7,8 +7,6 @@ import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import AddFavourites from './components/AddFavourites';
 
-import NavBar from "./components/NavBar";
-
 import MainContainer from "./pages/MainContainer";
 
 export default function App() {

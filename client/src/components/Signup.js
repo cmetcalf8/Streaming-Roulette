@@ -1,7 +1,7 @@
-import React,{useState} from 'react';
-import '../styles/signup.css';
+import React, { useState } from 'react';
+import '../styles/login.css';
 
-export default function Form() {
+export default function Signup() {
 
 // States for registration
 const [name, setName] = useState('');

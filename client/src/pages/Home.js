@@ -1,7 +1,11 @@
 import React from 'react';
 import "../App.css";
+import { MDBBtn } from 'mdb-react-ui-kit';
 
 function homePage() {
+    const handleClick = () => {
+
+    }
     return (
         <div className='home'>
             <div>
@@ -11,9 +15,9 @@ function homePage() {
                 <h4>Hit the start button below and be presented with a random movie to watch.</h4>
             </div>
             <div>
-                <button>
+                <MDBBtn rounded className='text-light' color='dark' onClick={handleClick}>
                     Start
-                </button>
+                </MDBBtn>
             </div>
         </div>
     )
