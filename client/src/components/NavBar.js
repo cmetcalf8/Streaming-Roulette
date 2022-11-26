@@ -7,7 +7,7 @@ export default function NavBar({ currentPage, handlePageChange}) {
 
     return (
       <nav className="navigation">
-        <a href="/" className="brand-name">
+        <a href="/" onClick={() => handlePageChange('Home')} className="brand-name" {...currentPage === 'Home' ? 'nav-link active' : 'nav-link'}>
           Home
         </a>
         <button className="hamburger" onClick={() => { setIsNavExpanded(!isNavExpanded);}}>
@@ -31,13 +31,13 @@ export default function NavBar({ currentPage, handlePageChange}) {
           }>
           <ul>
             <li>
-              <a href="/signup">Sign Up</a>
+              <a href="#signup" onClick={() => handlePageChange('SignUp')} className={currentPage === 'SignUp' ? 'nav-link active' : 'nav-link'}>Sign Up</a>
             </li>
             <li>
-              <a href="/login">Login</a>
+              <a href="#login" onClick={() => handlePageChange('Login')} className={currentPage === 'Login' ? 'nav-link active' : 'nav-link'}>Login</a>
             </li>
             <li>
-              <a href="/favorites">Favorites</a>
+              <a href="#favorites" onClick={() => handlePageChange('Favorites')} className={currentPage === 'Favorites' ? 'nav-link active' : 'nav-link'}>Favorites</a>
             </li>
           </ul>
         </div>

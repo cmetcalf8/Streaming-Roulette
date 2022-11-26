@@ -4,10 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
-import NavBar from "./components/NavBar";
 import './App.css';
 import AddFavourites from './components/AddFavourites';
-// import { useEffect } from 'react';
+
+import NavBar from "./components/NavBar";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+import Favorites from "./components/Favorites";
 
 
 export default function App() {
@@ -55,11 +58,35 @@ export default function App() {
       (favourite) => favourite.imdbID !== movie.imdbID)
   };
 
+  // Page handler so the page will change with the selected component
+  // const [currentPage, setCurrentPage] = useState('App');
+
+  // const renderPage = () => {
+  //   if (currentPage === 'App') {
+  //     return <App />;
+  //   }
+  //   if (currentPage === 'SignUp') {
+  //     return <Signup />;
+  //   }
+  //   if (currentPage === 'Login') {
+  //     return <Login />;
+  //   }
+  //   // if (currentPage === 'Favorites') {
+  //   //     return <Favorites />;
+  //   // }
+  //   return <App />;
+  // };
+
+  // const handlePageChange = (page) => setCurrentPage(page);
+
   return (
     
     <div className='container-fluid movie-app'>
       <div className="">
-        <NavBar />
+      <NavBar  
+      // currentPage={currentPage} handlePageChange={handlePageChange}
+      />
+      {/* {renderPage()} */}
       </div>
       <div className='row d-flex align-items-center mt-4 mb-4'>
         <MovieListHeading heading='Movies' />
