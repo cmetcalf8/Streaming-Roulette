@@ -58,7 +58,7 @@ export default function App() {
   return (
     
     <div className='container-fluid movie-app'>
-      <div>
+      <div className="">
         <NavBar />
       </div>
       <div className='row d-flex align-items-center mt-4 mb-4'>
