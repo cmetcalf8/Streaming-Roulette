@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, {useState, useEffect} from "react"; // { useEffect, useState } 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
@@ -10,7 +11,7 @@ import AddFavourites from './components/AddFavourites';
 
 
 export default function App() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]); // setMovies
   const [favourites, setFavourites] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
@@ -21,9 +22,10 @@ export default function App() {
 
     const response = await fetch(url);
     const responseJson = await response.json();
-
     if (responseJson.Search) {
+      debugger;
       setMovies(responseJson.Search);
+      debugger;
     };
   };
 
@@ -31,13 +33,11 @@ export default function App() {
     getMovieRequest(searchValue);
   }, [searchValue]);
 
-  useEffect(() => {
-    const movieFavourites = JSON.parse(
-      localStorage.getItem('react-movie-app-favourites')
-    );
-
-    setFavourites(movieFavourites);
-  }, []);
+  // useEffect(() => {
+  //   setFavourites(JSON.parse(
+  //     localStorage.getItem('react-movie-app-favourites')
+  //   ));
+  // }, []);
 
 
   const saveToLocalStorage = (items) => {
@@ -45,20 +45,18 @@ export default function App() {
   };
 
   const addFavouriteMovie = (movie) => {
-    const newFavouriteList = [...favourites, movie]
+     let newFavouriteList = [...favourites, movie]
     setFavourites(newFavouriteList);
     saveToLocalStorage(newFavouriteList);
   };
 
   const RemoveFavourites = (movie) => {
-    const newFavouriteList = favourites.filter(
+     return favourites.filter(
       (favourite) => favourite.imdbID !== movie.imdbID)
   };
 
-  setFavourites(newFavouriteList);
-  saveToLocalStorage(newFavouriteList);
-
   return (
+    
     <div className='container-fluid movie-app'>
       <div>
         <NavBar />
@@ -69,6 +67,7 @@ export default function App() {
       </div>
       <div className="row">
         <MovieList
+          getMovieRequest={getMovieRequest}
           movies={movies}
           handleFavouritesClick={addFavouriteMovie}
           favouriteComponent={AddFavourites}
