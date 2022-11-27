@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/login.css";
+import { css } from '@emotion/react';
 
 function Login() {
     const [errorMessages, setErrorMessages] = useState({});
@@ -8,68 +8,68 @@ function Login() {
     // user login info
     const database = [
         {
-            username: "user1",
+            email: "email1",
             password: "pass1"
         }
     ];
 
     const errors = {
-        username: "invalid username",
-        password: "invalid password"
+        email: "Invalid Email",
+        password: "Invalid Password"
     };
 
     const handleSubmit = (event) => {
         // prevent page reload
         event.preventDefault();
-        var { username, password } = document.forms[0];
+        var { email, password } = document.forms[0];
 
         // find user login info
-        const userData = database.findIndex((user) => user.username === username.vaule);
+        const userData = database.findIndex((user) => user.email === email.value);
 
         // compare user info
         if (userData) {
             if (userData.password !== password.value) {
               // Invalid password
-              setErrorMessages({ name: "password", message: errors.pass });
+              setErrorMessages({ name: "password", message: errors.password });
             } else {
               setIsSubmitted(true);
             }
           } else {
-            // Username not found
-            setErrorMessages({ name: "username", message: errors.uname });
+            // email not found
+            setErrorMessages({ name: "email", message: errors.email });
           }
         
         }
 
         const renderErrorMessage = (name) =>
         name === errorMessages.name && (
-          <div className="error">{errorMessages.message}</div>
+          <div className="login-error">{errorMessages.message}</div>
         );
 
     const renderForm = (
-        <div className="form">
+        <div className="login-form">
           <form onSubmit={handleSubmit}>
-            <div className="label">
-              <label>Username </label>
-              <input type="text" className="input" required />
-              {renderErrorMessage("username")}
+            <div className="login-label">
+              <label>Email:  </label>
+              <input type="text" className="login-input" required />
+              {renderErrorMessage("email")}
             </div>
-            <div className="label">
-              <label>Password </label>
-              <input type="password" className="input" required />
+            <div className="login-label">
+              <label>Password:  </label>
+              <input type="password" className="login-input" required />
               {renderErrorMessage("password")}
             </div>
-            <div className="btn">
-              <input type="submit" />
-            </div>
+            <button onClick={handleSubmit} className="login-btn" type="submit">
+		        Submit
+		    </button>
           </form>
         </div>
       );
     
       return (
-        <div className="app">
+        <div>
           <div className="login-form">
-            <div className="title">Login</div>
+            <div className="login-title">Login</div>
             {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
           </div>
         </div>

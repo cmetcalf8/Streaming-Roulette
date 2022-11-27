@@ -1,24 +1,23 @@
-.App {
+.login-form{
     text-align: center;
-    background-color:blue;
-  }
-   
-  .label{
+}
+
+.login-label{
     display: block;
     font-size: larger;
-    color: white;
+    color: black;
     padding: 5px;
   }
    
-  .input{
+  .login-input{
     font-size: larger;
     padding: 5px;
     margin: 2px;
     
   }
-  .btn{
+  .login-btn{
     color: white;
-    background-color: red;
+    background-color: black;
     border-radius: 5px;
     font-size: larger;
     display: block;
@@ -26,25 +25,32 @@
     margin: 10px auto;
   }
    
-  .messages{
+  .login-messages{
     display: flex;
     justify-content: center;
   }
    
-  .error{
+  .login-error{
     display: block;
-    background-color: red;
-    color: white;
+    background-color: white;
+    color: red;
     width: fit-content;
     height: 50px;
     padding: 5px;
   }
    
-  .success{
+  .login-success{
     display: block;
     background-color: lightblue;
     color: black;
     width: fit-content;
     height: 50px;
+    padding: 5px;
+  }
+
+  .login-title{
+    display: block;
+    font-size: larger;
+    color: black;
     padding: 5px;
   }

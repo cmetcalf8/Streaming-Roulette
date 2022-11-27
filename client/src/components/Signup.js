@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/login.css';
+import '../styles/signup.css';
 
 export default function Signup() {
 
@@ -45,7 +45,7 @@ const handleSubmit = (e) => {
 const successMessage = () => {
 	return (
 	<div
-		className="success"
+		className="signup-success"
 		style={{
 		display: submitted ? '' : 'none',
 		}}>
@@ -58,7 +58,7 @@ const successMessage = () => {
 const errorMessage = () => {
 	return (
 	<div
-		className="error"
+		className="signup-error"
 		style={{
 		display: error ? '' : 'none',
 		}}>
@@ -68,32 +68,32 @@ const errorMessage = () => {
 };
 
 return (
-	<div className="form">
+	<div className="signup-form">
 	<div>
 		<h1>User Registration</h1>
 	</div>
 
 	{/* Calling to the methods */}
-	<div className="messages">
+	<div className="signup-messages">
 		{errorMessage()}
 		{successMessage()}
 	</div>
 
 	<form>
 		{/* Labels and inputs for form data */}
-		<label className="label">Name</label>
-		<input onChange={handleName} className="input"
+		<label className="signup-label">Name</label>
+		<input onChange={handleName} className="signup-input"
 		value={name} type="text" />
 
-		<label className="label">Email</label>
-		<input onChange={handleEmail} className="input"
+		<label className="signup-label">Email</label>
+		<input onChange={handleEmail} className="signup-input"
 		value={email} type="email" />
 
-		<label className="label">Password</label>
-		<input onChange={handlePassword} className="input"
+		<label className="signup-label">Password</label>
+		<input onChange={handlePassword} className="signup-input"
 		value={password} type="password" />
 
-		<button onClick={handleSubmit} className="btn" type="submit">
+		<button onClick={handleSubmit} className="signup-btn" type="submit">
 		Submit
 		</button>
 	</form>

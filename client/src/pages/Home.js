@@ -12,7 +12,7 @@ function homePage() {
                 <h1>Welcome to Streaming Roulette</h1>
             </div>
             <div>
-                <h4>Hit the start button below and be presented with a random movie to watch.</h4>
+                <h4>Hit the start button below to get a random movie to watch.</h4>
             </div>
             <div>
                 <MDBBtn rounded className='text-light' color='dark' onClick={handleClick}>
