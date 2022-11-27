@@ -1,0 +1,49 @@
+.signup-form{
+  text-align: center;
+}  
+  
+  .signup-label{
+    display: block;
+    font-size: larger;
+    color: black;
+    padding: 5px;
+  }
+   
+  .signup-input{
+    font-size: larger;
+    padding: 5px;
+    margin: 2px;
+    
+  }
+  .signup-btn{
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    font-size: larger;
+    display: block;
+    padding: 5px;
+    margin: 10px auto;
+  }
+   
+  .signup-messages{
+    display: flex;
+    justify-content: center;
+  }
+   
+  .signup-error{
+    display: block;
+    background-color: white;
+    color: red;
+    width: fit-content;
+    height: 50px;
+    padding: 5px;
+  }
+   
+  .signup-success{
+    display: block;
+    background-color: lightblue;
+    color: black;
+    width: fit-content;
+    height: 50px;
+    padding: 5px;
+  }

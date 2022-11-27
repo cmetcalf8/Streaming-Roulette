@@ -1,36 +1,35 @@
 import React from 'react';
+import "../App.css";
+import { MDBBtn } from 'mdb-react-ui-kit';
 
-function homePage() {
-    return (
-        <div>
+const homePage = () => {
+
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '803769a760msh0b927317a3037b5p16a8f3jsnaab08108dfb1',
+            'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+        }
+    };
+    
+    fetch('https://imdb-top-100-movies.p.rapidapi.com/premiummovies', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+        
+        return (
+            <div className='home'>
             <div>
                 <h1>Welcome to Streaming Roulette</h1>
             </div>
             <div>
-                <h2>Select your streaming platform and genre then hit start.</h2>
+                <h4>Hit the start button below to get a random movie to watch.</h4>
             </div>
             <div>
-            <select className="platformList" id="platformList">
-                <option value="option 1">Netflix</option>
-                <option value="option 2">Hulu</option>
-                <option value="option 3">Prime</option>
-                <option value="option 4">HBO</option>
-                <option value="option 5">Disney+</option>
-            </select>
-            </div>
-            <div>
-            <select className="genreList" id="genreList">
-                <option value="option 1">Comedy</option>
-                <option value="option 2">Drama</option>
-                <option value="option 3">Horror</option>
-                <option value="option 4">Action</option>
-                <option value="option 5">Romance</option>
-            </select>
-            </div>
-            <div>
-                <button>
+                <MDBBtn rounded className='text-light' color='dark' onClick={options}>
                     Start
-                </button>
+                </MDBBtn>
             </div>
         </div>
     )

@@ -1,0 +1,56 @@
+.login-form{
+    text-align: center;
+}
+
+.login-label{
+    display: block;
+    font-size: larger;
+    color: black;
+    padding: 5px;
+  }
+   
+  .login-input{
+    font-size: larger;
+    padding: 5px;
+    margin: 2px;
+    
+  }
+  .login-btn{
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    font-size: larger;
+    display: block;
+    padding: 5px;
+    margin: 10px auto;
+  }
+   
+  .login-messages{
+    display: flex;
+    justify-content: center;
+  }
+   
+  .login-error{
+    display: block;
+    background-color: white;
+    color: red;
+    width: fit-content;
+    height: 50px;
+    padding: 5px;
+  }
+   
+  .login-success{
+    display: block;
+    background-color: lightblue;
+    color: black;
+    width: fit-content;
+    height: 50px;
+    padding: 5px;
+  }
+
+  .login-title{
+    display: block;
+    font-size: larger;
+    color: black;
+    padding: 5px;
+  }
