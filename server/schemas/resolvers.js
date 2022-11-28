@@ -1,12 +1,19 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
-
+const { getMovieRecomendation } = require('../utils/movie');
 const resolvers = {
     Query: {
       user: async (parent, { username }) => {
         return User.findOne({ username }).populate('favs');
       },
+      movieRecomendation: async (parent) => {
+        const movie = await getMovieRecomendation()
+        console.log(movie)
+        console.log('xxxx')
+        return {title: movie.title, imageURL: movie.imageURL};
+
+      }
     },
   
     Mutation: {
