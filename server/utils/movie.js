@@ -1,3 +1,7 @@
+const jwt = require('jsonwebtoken');
+
+const secret = 'mysecretssshhhhhhh';
+const expiration = '2h';
 const axios = require("axios");
 
 const options = {
@@ -18,25 +22,16 @@ const options = {
   }
 };
 
- export function getRandomMovie(){
-    axios.request(options).then(function (response) {
-        
-        // console.log(response.data.results);
-        randomize(response.data.results);
-        return response.data
-    }).catch(function (error) {
-        console.error(error);
-    });
-}
-getRandomMovie()
+  
+
 
 function randomize(movieArray){
 
   var randomMovieIndex = Math.floor(Math.random()*movieArray.length)
-  console.log(randomMovieIndex)
+ 
 
 var randomMovieTitle = movieArray[randomMovieIndex].title
-console.log(randomMovieTitle)
+
 var randomMovieRating = movieArray[randomMovieIndex].imdbRating
 var randomMovieOverview = movieArray[randomMovieIndex].overview
 var randomMovieIMG = movieArray[randomMovieIndex].posterPath
@@ -47,6 +42,24 @@ var movieObject = {
   overview: randomMovieOverview,
   imageURL: randomMovieIMG
 }
-console.log(movieObject)
+
 return movieObject;
 }
+
+module.exports = {
+  
+  getMovieRecomendation: async function () {
+    try {
+    const response = await axios.request(options) 
+        
+        // console.log(response.data.results);
+        const movie = randomize(response.data.results);
+        console.log(movie)
+        console.log('zzzz')
+        return movie
+    }
+    catch (error) {
+        console.error(error);
+    };
+  },
+};

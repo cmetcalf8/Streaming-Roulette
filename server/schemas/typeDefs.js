@@ -16,9 +16,14 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+  type Movie {
+    title: String
+    imageURL: String
+  }
 
   type Query {
     user(username: String!): User
+    movieRecomendation: Movie
   }
 
   type Mutation {
