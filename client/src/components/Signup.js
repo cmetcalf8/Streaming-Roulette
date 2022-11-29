@@ -31,7 +31,7 @@ const handlePassword = (e) => {
 };
 
 // Handling the form submission
-const handleSubmit = async (e) => {
+const handleSubmit = (e) => {
 	e.preventDefault();
 	if (name === '' || email === '' || password === '') {
 	setError(true);
