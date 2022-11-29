@@ -4,7 +4,7 @@ import { MDBBtn } from 'mdb-react-ui-kit';
 
 const HomePage = () => {
 
-    const [movieState, setMovieState] = useState([]);
+    const [movieState, setMovieState] = useState(null);
 
     const apiURL = 'https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=netflix&type=movie&genre=18&page=1&output_language=en&language=en'
 
@@ -22,8 +22,8 @@ const HomePage = () => {
         try {
             const response = await fetch(apiURL, options).then(response => response.json()).then(response =>  {
                 const movies = response.results;
-                console.log(movies);
-                setMovieState(movies);
+                const movie = movies[Math.floor(Math.random()*movies.length)];
+                setMovieState(movie);
             });
         } catch (err) {
             console.log(err)
@@ -42,15 +42,18 @@ const HomePage = () => {
                     Start
                 </MDBBtn>
             </div>
-            <div>
-                {movieState.map((movie, index) => {
-                    return (<div id={index}>
-                        {/* <p>Runtime: {movie.runtime}</p> */}
-                        {/* <p>{movie.title}</p> */}
-                        <img src={movie.posterURLs.original} className="movie-poster"></img>
-                    </div>)
-                })}
-            </div>
+           {movieState&&<div>
+               <div>{movieState.title}</div> 
+               <div>{movieState.overview}</div> 
+               <div>{movieState.imbdRating}</div> 
+
+                    <div>
+                        <img src={movieState.posterURLs.original} className="movie-poster"></img>
+                    </div>
+                    
+                
+              
+            </div>}
         </div>
     )
 }
