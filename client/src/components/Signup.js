@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/signup.css';
 
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
-
 export default function Signup() {
-
-	const [addUser] = useMutation(ADD_USER);
 
 // States for registration
 const [name, setName] = useState('');
@@ -44,17 +39,6 @@ const handleSubmit = async (e) => {
 	setSubmitted(true);
 	setError(false);
 	}
-
-	const mutationResponse = await addUser({
-		variables: {
-		  email: formState.email,
-		  password: formState.password,
-		  firstName: formState.firstName,
-		  lastName: formState.lastName,
-		},
-	  });
-	  const token = mutationResponse.data.addUser.token;
-	  Auth.login(token);
 };
 
 // Showing success message
